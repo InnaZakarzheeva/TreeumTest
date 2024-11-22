@@ -1,13 +1,16 @@
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
-
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {QueryClient, QueryClientProvider} from 'react-query';
+import Navigation from './src/navigation';
+import {NavigationContainer} from '@react-navigation/native';
 
 function App(): React.JSX.Element {
+  const queryClient = new QueryClient();
   return (
-    <SafeAreaView>
-      <StatusBar barStyle={'dark-content'} backgroundColor={Colors.lighter} />
-    </SafeAreaView>
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>
+        <Navigation />
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 }
 
